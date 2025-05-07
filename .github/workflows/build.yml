@@ -3,18 +3,21 @@ name: "Build In Docker"
 on:
   workflow_dispatch:
     inputs:
-      name:
-        description: 'Input something'
+      branch:
+        description: '要使用的分支名称'
         required: true
-        default: 'Hello'
+        default: 'main'
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v4
+      - name: 检出指定分支的代码
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
+      - name: 打印分支名称
+        run: echo "当前使用的分支是: ${{ github.event.inputs.branch }}"
 
     - name: Debug Check workspace
       run: |
