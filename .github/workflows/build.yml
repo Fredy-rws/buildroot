@@ -1,0 +1,23 @@
+name: "Build In Docker"
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Input something'
+        required: true
+        default: 'Hello'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Debug Check workspace
+      run: |
+        pwd
+        ls -al
+        env
