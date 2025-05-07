@@ -16,11 +16,13 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.branch }}
-      - name: 打印分支名称
-        run: echo "当前使用的分支是: ${{ github.event.inputs.branch }}"
 
-    - name: Debug Check workspace
-      run: |
-        pwd
-        ls -al
-        env
+      - name: 打印分支名称
+        run: |
+          echo "当前使用的 tag 是: ${{ github.event.inputs.tag }}"
+
+      - name: Debug Check workspace
+        run: |
+          pwd
+          ls -al
+          env
